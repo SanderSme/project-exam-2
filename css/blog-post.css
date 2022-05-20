@@ -1,0 +1,87 @@
+.post-main-img {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.blog-text {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.blog-text-2 {
+  font-size: 1.1rem;
+}
+
+.post-sub-img {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.flex-container-sub {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pros-cons-heading {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.seperating-line {
+  height: 25rem;
+  width: 2px;
+  background-color: #333;
+  margin: 1rem 2rem;
+}
+
+.text {
+  font-size: 1rem;
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 767px) {
+  .blog-flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .post-main-img {
+    width: 60%;
+  }
+
+  .text {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 1148px) {
+  .blog-flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .blog-text {
+    margin-top: 2rem;
+    width: 55%;
+  }
+
+  .blog-text-2 {
+    margin-top: 2rem;
+  }
+
+  .post-main-img {
+    width: 40%;
+  }
+
+  .text {
+    font-size: 1.2rem;
+  }
+
+  .pros-cons-heading {
+    font-size: 1.5rem;
+  }
+}
