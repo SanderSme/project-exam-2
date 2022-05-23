@@ -5,7 +5,7 @@ const params = new URLSearchParams(queryString);
 
 const postID = params.get("id");
 
-const API_URL = `http://boatdatlife.flywheelsites.com//wp-json/wp/v2/posts/${postID}?acf_format=standard`;
+const API_URL = `http://boatdatlife.flywheelsites.com/wp-json/wp/v2/posts/${postID}?acf_format=standard`;
 
 const postHeading = document.querySelector(".general-heading");
 const blogPost = document.querySelector(".blog-post");

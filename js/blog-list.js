@@ -1,11 +1,19 @@
 const API_URL =
-  "http://boatdatlife.flywheelsites.com//wp-json/wp/v2/posts?acf_format=standard";
+  "http://boatdatlife.flywheelsites.com/wp-json/wp/v2/posts?acf_format=standard&per_page=10";
 const blogList = document.querySelector(".blog-list-container");
+
+let counter = 0;
 
 async function getPosts(offset) {
   try {
     const response = await fetch(`${API_URL}&offset=${offset}`);
     let postData = await response.json();
+    let totalPages = await response.headers.get("X-WP-TotalPages");
+    counter += 1;
+    const buttonContainer = document.querySelector(".button-container");
+    if (counter == totalPages) {
+      buttonContainer.style.display = "none";
+    }
     // blogList.innerHTML = "";
     for (let i = 0; i < postData.length; i++) {
       const postTitle = postData[i].acf.hero_title;
@@ -30,6 +38,7 @@ async function getPosts(offset) {
               >Read ></a
             ></div>`;
     }
+    return counter;
   } catch (error) {
     blogList.innerHTML = `<p class="error-message">Something went wrong :(</p>`;
   }
@@ -38,5 +47,5 @@ async function getPosts(offset) {
 getPosts(0);
 
 const loadMore = () => {
-  getPosts(10);
+  getPosts(counter * 10);
 };

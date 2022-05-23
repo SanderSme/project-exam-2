@@ -77,7 +77,7 @@ dotsNav.addEventListener("click", (e) => {
 });
 
 const API_URL =
-  "http://boatdatlife.flywheelsites.com//wp-json/wp/v2/posts?acf_format=standard&per_page=6";
+  "http://boatdatlife.flywheelsites.com/wp-json/wp/v2/posts?acf_format=standard&per_page=6";
 const carouselContent = document.querySelector(".carousel-track");
 
 async function getPosts() {
