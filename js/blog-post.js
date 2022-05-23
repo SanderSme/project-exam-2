@@ -71,27 +71,37 @@ async function getPostDetails() {
         </ul>
       </div>
     </div>
-    <div class="post-overlay"></div>
-    <div class="big-img">
-    <img
-    src="${postImage}"
-    alt="${imageAlt}"
-    class="main-overlay-img"/></div>`;
+    <div class="overlay-container">
+      <div class="post-overlay"></div>
+      <div class="big-img">
+        <img src="${postImage}" alt="${imageAlt}" class="main-overlay-img"/>
+        <img src="${subImage}" alt="${subAlt}" class="sub-overlay-img"/>
+      </div>
+    </div>`;
     const postMainImg = document.querySelector(".post-main-img");
+    const postSubImg = document.querySelector(".post-sub-img");
     const overlay = document.querySelector(".post-overlay");
-    const bigImg = document.querySelector(".big-img");
+    const overlayContainer = document.querySelector(".overlay-container");
     const mainOverlayImg = document.querySelector(".main-overlay-img");
+    const subOverlayImg = document.querySelector(".sub-overlay-img");
 
     postMainImg.addEventListener("click", () => {
-      overlay.style.display = "block";
-      bigImg.style.display = "flex";
+      overlayContainer.style.display = "flex";
       mainOverlayImg.style.display = "block";
+      window.document.documentElement.style.overflow = "hidden";
+    });
+
+    postSubImg.addEventListener("click", () => {
+      overlayContainer.style.display = "flex";
+      subOverlayImg.style.display = "block";
+      window.document.documentElement.style.overflow = "hidden";
     });
 
     overlay.addEventListener("click", () => {
-      overlay.style.display = "none";
-      bigImg.style.display = "none";
+      overlayContainer.style.display = "none";
       mainOverlayImg.style.display = "none";
+      subOverlayImg.style.display = "none";
+      window.document.documentElement.style.overflow = "unset";
     });
   } catch (error) {
     postHeading.innerHTML = "ERROR";
