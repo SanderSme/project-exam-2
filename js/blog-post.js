@@ -5,7 +5,7 @@ const params = new URLSearchParams(queryString);
 
 const postID = params.get("id");
 
-const API_URL = `http://boatthatlifesander.local/wp-json/wp/v2/posts/${postID}`;
+const API_URL = `http://boatthatlifesander.local/wp-json/wp/v2/posts/${postID}?acf_format=standard`;
 
 const postHeading = document.querySelector(".general-heading");
 const blogPost = document.querySelector(".blog-post");
@@ -13,17 +13,67 @@ const blogPost = document.querySelector(".blog-post");
 async function getPostDetails() {
   try {
     const response = await fetch(API_URL);
-    const singlePostDetails = await response.json();
+    const responseJSON = await response.json();
+    const singlePostDetails = responseJSON;
     console.log(singlePostDetails);
-    for (let i = 0; i < singlePostDetails.length; i++) {
-      const postTitle = singlePostDetails[i].acf.hero_title;
-      const postImage = singlePostDetails[i]._embedded["wp:featuredmedia"]['0'].source_url;
-      const paragraph1 = singlePostDetails[i].acf.paragraph_1;
-      const paragraph2 = singlePostDetails[i].acf.paragraph_2;
-      const pros1 = singlePostDetails[i].acf.pros-1
-    }
+    postHeading.innerHTML = '';
+      const postTitle = singlePostDetails.acf.hero_title;
+      const postImage = singlePostDetails.acf.hero_image.url;
+      const imageAlt = singlePostDetails.acf.hero_image.alt;
+      const subImage = singlePostDetails.acf.pros_cons_image.url;
+      const subAlt = singlePostDetails.acf.pros_cons_image.alt;
+      const paragraph1 = singlePostDetails.acf.paragraph_1;
+      const paragraph2 = singlePostDetails.acf.paragraph_2;
+      const pros1 = singlePostDetails.acf.pros_1;
+      const pros2 = singlePostDetails.acf.pros_2;
+      const pros3 = singlePostDetails.acf.pros_3;
+      const pros4 = singlePostDetails.acf.pros_4;
+      const cons1 = singlePostDetails.acf.cons_1;
+      const cons2 = singlePostDetails.acf.cons_2;
+      const cons3 = singlePostDetails.acf.cons_3;
+      const cons4 = singlePostDetails.acf.cons_4;
+      title.innerHTML = `${postTitle}`
+      postHeading.innerHTML = `${postTitle}`;
+      blogPost.innerHTML = `<div class="blog-flex-container">
+      <img
+        src="${postImage}"
+        alt="${imageAlt}"
+        class="post-main-img"
+      />
+      <p class="blog-text">
+        ${paragraph1}
+      </p>
+    </div>
+    <p class="blog-text-2">${paragraph2}</p>
+    <img
+      src="${subImage}"
+      alt="${subAlt}"
+      class="post-sub-img"
+    />
+    <div class="flex-container-sub">
+      <div class="pros-cons good">
+        <h4 class="pros-cons-heading">Favorite parts</h4>
+        <ul class="arguments">
+          <li class="text">${pros1}</li>
+          <li class="text">${pros2}</li>
+          <li class="text">${pros3}</li>
+          <li class="text">${pros4}</li>
+        </ul>
+      </div>
+      <div class="seperating-line"></div>
+      <div class="pros-cons">
+        <h4 class="pros-cons-heading">Challenges</h4>
+        <ul class="arguments">
+          <li class="text">${cons1}</li>
+          <li class="text">${cons2}</li>
+          <li class="text">${cons3}</li>
+          <li class="text">${cons4}</li>
+        </ul>
+      </div>
+    </div>`
   } catch (error) {
-    console.log(error);
+    postHeading.innerHTML = 'ERROR'
+    blogPost.innerHTML = `<p class="error-message">Something went wrong :(</p>`
   }
 }
 getPostDetails();

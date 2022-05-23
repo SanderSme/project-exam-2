@@ -1,4 +1,4 @@
-const API_URL = 'http://boatthatlifesander.local/wp-json/wp/v2/posts?_embed=true&per_page=100';
+const API_URL = 'http://boatthatlifesander.local/wp-json/wp/v2/posts?acf_format=standard&per_page=100';
 const blogList = document.querySelector('.blog-list-container');
 
 async function getPosts() {
@@ -11,11 +11,13 @@ async function getPosts() {
             const postTitle = postData[i].acf.hero_title;
             const postDate = postData[i].date.split('T')[0];
             const postSummary = postData[i].acf.summary;
-            const postImage = postData[i]._embedded["wp:featuredmedia"]['0'].source_url;
-            blogList.innerHTML += `<div class="blog-post"><img src="${postImage}" alt="" class="blog-post-img" />
+            const postImage = postData[i].acf.hero_image.url;
+            const postImageAlt = postData[i].acf.hero_image.alt;
+            const category = postData[i].acf.category;
+            blogList.innerHTML += `<div class="blog-post"><img src="${postImage}" alt="${postImageAlt}" class="blog-post-img" />
             <div class="blog-info-container">
               <h2 class="post-heading post-info">${postTitle}</h2>
-              <h3 class="category post-info">Travel</h3>
+              <h3 class="category post-info">${category}</h3>
               <p class="post-date post-info">Posted on: ${postDate}</p>
               <p class="summary">
                 <b>Summary: </b>${postSummary}
@@ -29,7 +31,7 @@ async function getPosts() {
             ></div>`
         }
     } catch (error) {
-        console.log('ERROOOOOR');
+        blogList.innerHTML = `<p class="error-message">Something went wrong :(</p>`
     }
 }
 getPosts()

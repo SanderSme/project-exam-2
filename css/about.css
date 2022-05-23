@@ -1,0 +1,48 @@
+body {
+  background-image: url(/img/about-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.text {
+  color: white;
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+.general-heading {
+  border-bottom: 3px solid white;
+  color: white;
+}
+
+.about-img {
+  margin: 2rem 0;
+}
+
+@media screen and (min-width: 1148px) {
+  .general-heading {
+    border-bottom: none;
+  }
+
+  .general-line {
+    background: white;
+  }
+
+  .about-flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .text {
+    line-height: 3rem;
+  }
+
+  .paragraph-2 {
+    margin-top: 2rem;
+  }
+
+  .about-img {
+    margin: 2rem 3rem 0 0;
+  }
+}

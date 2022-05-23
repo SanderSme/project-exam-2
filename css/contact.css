@@ -1,0 +1,69 @@
+body {
+  background-image: url(/img/contact-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+.form {
+  width: 100%;
+  height: 2rem;
+  margin-top: 2rem;
+}
+
+#name-form {
+  margin-top: 4rem;
+}
+
+#message-form {
+  height: 10rem;
+}
+
+.submit-button {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.field-container {
+  position: relative;
+}
+
+.error-message {
+  color: red;
+  position: absolute;
+  bottom: 2rem;
+  background: #ffffff70;
+}
+
+#message-error {
+  bottom: 10rem;
+}
+
+.submit-container {
+  position: relative;
+}
+
+.submitted {
+  position: absolute;
+  color: white;
+  background: green;
+  width: 100%;
+  border-radius: 10px;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 767px) {
+  .contact-container {
+    width: 60%;
+    margin: 0 auto;
+  }
+}

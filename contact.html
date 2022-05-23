@@ -23,8 +23,10 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/contact.css" />
     <script src="./js/header.js" defer></script>
-    <title>Home</title>
+    <script src="./js/contact.js" defer></script>
+    <title>Contact</title>
   </head>
   <body>
     <header class="header">
@@ -58,13 +60,89 @@
             <a href="./blog-list.html" class="desktop-only desktop-menu-item"
               >Blogs</a
             >
-            <a href="./about.html" class="desktop-only desktop-menu-item">About</a>
-            <a href="./contact.html" class="desktop-only desktop-menu-item">Contact</a>
+            <a href="./about.html" class="desktop-only desktop-menu-item"
+              >About</a
+            >
+            <a href="./contact.html" class="desktop-only desktop-menu-item"
+              >Contact</a
+            >
           </div>
         </div>
       </div>
     </header>
     <main>
+      <div class="page-container">
+        <div class="general-heading-container">
+          <div class="general-line desktop-only"></div>
+          <h1 class="general-heading">Contact</h1>
+          <div class="general-line desktop-only"></div>
+        </div>
+        <div class="contact-container">
+          <form
+            name="form-container"
+            class="form-container"
+            action="#"
+            onsubmit="return false"
+          >
+            <div class="field-container">
+              <div class="submit-container">
+                <div class="submitted"></div>
+              </div>
+              <div class="error-message" id="name-error"></div>
+              <label for="name">
+                <input
+                  name="name"
+                  class="form"
+                  type="text"
+                  id="name-form"
+                  placeholder="Enter your name"
+                />
+              </label>
+            </div>
+            <div class="field-container">
+              <div class="error-message" id="subject-error"></div>
+              <label for="subject">
+                <input
+                  name="subject"
+                  class="form"
+                  type="text"
+                  id="subject-form"
+                  placeholder="What is your request about?"
+                />
+              </label>
+            </div>
+            <div class="field-container">
+              <div class="error-message" id="email-error"></div>
+              <label for="email">
+                <input
+                  name="email"
+                  class="form"
+                  type="text"
+                  id="email-form"
+                  placeholder="Enter your E-Mail"
+                />
+              </label>
+            </div>
+            <div class="field-container">
+              <div class="error-message" id="message-error"></div>
+              <label for="message">
+                <input
+                  name="message"
+                  class="form"
+                  type="text"
+                  id="message-form"
+                  placeholder="Write your message"
+                />
+              </label>
+            </div>
+            <div>
+              <button class="submit-button button" onclick="validateForm()">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </main>
     <footer class="footer">
       <div class="page-container footer-container">

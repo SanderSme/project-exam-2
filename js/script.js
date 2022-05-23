@@ -74,3 +74,23 @@ dotsNav.addEventListener('click', e => {
     updateDots(currentDot, targetDot);
     hideShowArrows(slides, nextBtn, prevBtn, targetIndex)
 });
+
+const API_URL = 'http://boatthatlifesander.local/wp-json/wp/v2/posts?_embed=true&per_page=100';
+const carouselContent = document.querySelector('.carousel-track');
+
+async function getPosts() {
+    try {
+        const response = await fetch(API_URL);
+        let postData = await response.json();
+        console.log(postData);
+        postData.length = 6;
+        for (let i = 0; i < postData.length; i++) {
+            const postTitle = postData[i].acf.hero_title;
+            const postImage = postData[i]._embedded["wp:featuredmedia"]['0'].source_url;
+            const postDate = postData[i].date.split('T')[0];
+        }
+    } catch (error) {
+        console.log('ERROOOOOR');
+    }
+}
+getPosts()

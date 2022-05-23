@@ -61,6 +61,13 @@
   border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
   animation: lds-hourglass 1.2s infinite;
 }
+
+.error-message {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
 @keyframes lds-hourglass {
   0% {
     transform: rotate(0);
@@ -103,5 +110,9 @@
 
   .lds-hourglass:after {
     left: 32rem;
+  }
+
+  .error-message {
+    margin-bottom: 20rem;
   }
 }
