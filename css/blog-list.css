@@ -10,6 +10,10 @@
   margin-top: 2rem;
 }
 
+.post-heading {
+  text-align: center;
+}
+
 .blog-info-container {
   display: flex;
   flex-direction: column;
