@@ -70,7 +70,29 @@ async function getPostDetails() {
           <li class="text">${cons4}</li>
         </ul>
       </div>
-    </div>`;
+    </div>
+    <div class="post-overlay"></div>
+    <div class="big-img">
+    <img
+    src="${postImage}"
+    alt="${imageAlt}"
+    class="main-overlay-img"/></div>`;
+    const postMainImg = document.querySelector(".post-main-img");
+    const overlay = document.querySelector(".post-overlay");
+    const bigImg = document.querySelector(".big-img");
+    const mainOverlayImg = document.querySelector(".main-overlay-img");
+
+    postMainImg.addEventListener("click", () => {
+      overlay.style.display = "block";
+      bigImg.style.display = "flex";
+      mainOverlayImg.style.display = "block";
+    });
+
+    overlay.addEventListener("click", () => {
+      overlay.style.display = "none";
+      bigImg.style.display = "none";
+      mainOverlayImg.style.display = "none";
+    });
   } catch (error) {
     postHeading.innerHTML = "ERROR";
     blogPost.innerHTML = `<p class="error-message">Something went wrong :(</p>`;

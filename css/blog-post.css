@@ -1,3 +1,7 @@
+body {
+  position: relative;
+}
+
 .post-main-img {
   width: 100%;
   margin-top: 2rem;
@@ -71,6 +75,50 @@
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
+
+/* .overlay-container {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+} */
+
+.post-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #00000090;
+  z-index: 500;
+  display: none;
+}
+
+.main-overlay-img {
+  width: 90%;
+  z-index: 999;
+  display: none;
+}
+
+.big-img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  z-index: 998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
 @keyframes lds-hourglass {
   0% {
     transform: rotate(0);
@@ -135,5 +183,10 @@
 
   .error-message {
     margin-bottom: 20rem;
+  }
+
+  .main-overlay-img {
+    height: 80vh;
+    width: unset;
   }
 }
