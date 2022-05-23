@@ -5,7 +5,7 @@ const params = new URLSearchParams(queryString);
 
 const postID = params.get("id");
 
-const API_URL = `http://boatthatlifesander.local/wp-json/wp/v2/posts/${postID}?acf_format=standard`;
+const API_URL = `http://boatdatlife.flywheelsites.com//wp-json/wp/v2/posts/${postID}?acf_format=standard`;
 
 const postHeading = document.querySelector(".general-heading");
 const blogPost = document.querySelector(".blog-post");
@@ -16,25 +16,25 @@ async function getPostDetails() {
     const responseJSON = await response.json();
     const singlePostDetails = responseJSON;
     console.log(singlePostDetails);
-    postHeading.innerHTML = '';
-      const postTitle = singlePostDetails.acf.hero_title;
-      const postImage = singlePostDetails.acf.hero_image.url;
-      const imageAlt = singlePostDetails.acf.hero_image.alt;
-      const subImage = singlePostDetails.acf.pros_cons_image.url;
-      const subAlt = singlePostDetails.acf.pros_cons_image.alt;
-      const paragraph1 = singlePostDetails.acf.paragraph_1;
-      const paragraph2 = singlePostDetails.acf.paragraph_2;
-      const pros1 = singlePostDetails.acf.pros_1;
-      const pros2 = singlePostDetails.acf.pros_2;
-      const pros3 = singlePostDetails.acf.pros_3;
-      const pros4 = singlePostDetails.acf.pros_4;
-      const cons1 = singlePostDetails.acf.cons_1;
-      const cons2 = singlePostDetails.acf.cons_2;
-      const cons3 = singlePostDetails.acf.cons_3;
-      const cons4 = singlePostDetails.acf.cons_4;
-      title.innerHTML = `${postTitle}`
-      postHeading.innerHTML = `${postTitle}`;
-      blogPost.innerHTML = `<div class="blog-flex-container">
+    postHeading.innerHTML = "";
+    const postTitle = singlePostDetails.acf.hero_title;
+    const postImage = singlePostDetails.acf.hero_image.url;
+    const imageAlt = singlePostDetails.acf.hero_image.alt;
+    const subImage = singlePostDetails.acf.pros_cons_image.url;
+    const subAlt = singlePostDetails.acf.pros_cons_image.alt;
+    const paragraph1 = singlePostDetails.acf.paragraph_1;
+    const paragraph2 = singlePostDetails.acf.paragraph_2;
+    const pros1 = singlePostDetails.acf.pros_1;
+    const pros2 = singlePostDetails.acf.pros_2;
+    const pros3 = singlePostDetails.acf.pros_3;
+    const pros4 = singlePostDetails.acf.pros_4;
+    const cons1 = singlePostDetails.acf.cons_1;
+    const cons2 = singlePostDetails.acf.cons_2;
+    const cons3 = singlePostDetails.acf.cons_3;
+    const cons4 = singlePostDetails.acf.cons_4;
+    title.innerHTML = `${postTitle}`;
+    postHeading.innerHTML = `${postTitle}`;
+    blogPost.innerHTML = `<div class="blog-flex-container">
       <img
         src="${postImage}"
         alt="${imageAlt}"
@@ -70,10 +70,10 @@ async function getPostDetails() {
           <li class="text">${cons4}</li>
         </ul>
       </div>
-    </div>`
+    </div>`;
   } catch (error) {
-    postHeading.innerHTML = 'ERROR'
-    blogPost.innerHTML = `<p class="error-message">Something went wrong :(</p>`
+    postHeading.innerHTML = "ERROR";
+    blogPost.innerHTML = `<p class="error-message">Something went wrong :(</p>`;
   }
 }
 getPostDetails();
