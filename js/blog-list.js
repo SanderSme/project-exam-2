@@ -1,5 +1,5 @@
 const API_URL =
-  "http://boatdatlife.flywheelsites.com/wp-json/wp/v2/posts?acf_format=standard&per_page=10";
+  "https://boatdatlife.flywheelsites.com/wp-json/wp/v2/posts?acf_format=standard&per_page=10";
 const blogList = document.querySelector(".blog-list-container");
 
 let counter = 0;
@@ -21,8 +21,8 @@ async function getPosts(offset) {
       const postImage = postData[i].acf.hero_image.url;
       const postImageAlt = postData[i].acf.hero_image.alt;
       const category = postData[i].acf.category;
-      const loading = document.querySelector('.lds-hourglass')
-      loading.style.display = 'none'
+      const loading = document.querySelector(".lds-hourglass");
+      loading.style.display = "none";
       blogList.innerHTML += `<div class="blog-post"><img src="${postImage}" alt="${postImageAlt}" class="blog-post-img" />
             <div class="blog-info-container">
               <h2 class="post-heading post-info">${postTitle}</h2>

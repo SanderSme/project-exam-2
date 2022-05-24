@@ -1,5 +1,5 @@
 const API_URL =
-  "http://boatdatlife.flywheelsites.com/wp-json/wp/v2/posts?acf_format=standard&per_page=6";
+  "https://boatdatlife.flywheelsites.com/wp-json/wp/v2/posts?acf_format=standard&per_page=6";
 const carouselContent = document.querySelector(".carousel-track");
 
 async function getPosts() {
@@ -12,7 +12,7 @@ async function getPosts() {
   }
 }
 getPosts().then((postData) => {
-  for (let i = 0; i < postData.length; i+=2) {
+  for (let i = 0; i < postData.length; i += 2) {
     const postTitle = postData[i].acf.hero_title;
     const postImage = postData[i].acf.hero_image.url;
     const postImageAlt = postData[i].acf.hero_image.alt;
@@ -20,7 +20,7 @@ getPosts().then((postData) => {
     const postDate = postData[i].date.split("T")[0];
     let counter = i + 1;
     if (counter === 6) {
-      break
+      break;
     }
     const postTitle2 = postData[counter].acf.hero_title;
     const postImage2 = postData[counter].acf.hero_image.url;
@@ -50,7 +50,7 @@ getPosts().then((postData) => {
         >
       </div>
     </div>
-  </li>`
+  </li>`;
   }
 
   const slides = Array.from(carouselContent.children);
@@ -59,72 +59,72 @@ getPosts().then((postData) => {
   const dotsNav = document.querySelector(".carousel-nav");
   const dots = Array.from(dotsNav.children);
 
-const slideSize = slides[0].getBoundingClientRect();
-const slideWidth = slideSize.width;
+  const slideSize = slides[0].getBoundingClientRect();
+  const slideWidth = slideSize.width;
 
-const setSlidePosition = (slide, index) => {
-  slide.style.left = slideWidth * index + "px";
-};
+  const setSlidePosition = (slide, index) => {
+    slide.style.left = slideWidth * index + "px";
+  };
 
-slides.forEach(setSlidePosition);
+  slides.forEach(setSlidePosition);
 
-const moveToSlide = (track, currentSlide, targetSlide) => {
-  track.style.transform = "translateX(-" + targetSlide.style.left + ")";
-  currentSlide.classList.remove("current-slide");
-  targetSlide.classList.add("current-slide");
-};
+  const moveToSlide = (track, currentSlide, targetSlide) => {
+    track.style.transform = "translateX(-" + targetSlide.style.left + ")";
+    currentSlide.classList.remove("current-slide");
+    targetSlide.classList.add("current-slide");
+  };
 
-const updateDots = (currentDot, targetDot) => {
-  currentDot.classList.remove("current-slide");
-  targetDot.classList.add("current-slide");
-};
+  const updateDots = (currentDot, targetDot) => {
+    currentDot.classList.remove("current-slide");
+    targetDot.classList.add("current-slide");
+  };
 
-prevBtn.addEventListener("click", (e) => {
-  const currentSlide = carouselContent.querySelector(".current-slide");
-  const prevSlide = currentSlide.previousElementSibling;
-  const currentDot = dotsNav.querySelector(".current-slide");
-  const prevDot = currentDot.previousElementSibling;
-  const prevIndex = slides.findIndex((slide) => slide === prevSlide);
-  moveToSlide(carouselContent, currentSlide, prevSlide);
-  updateDots(currentDot, prevDot);
-  hideShowArrows(slides, nextBtn, prevBtn, prevIndex);
-});
+  prevBtn.addEventListener("click", (e) => {
+    const currentSlide = carouselContent.querySelector(".current-slide");
+    const prevSlide = currentSlide.previousElementSibling;
+    const currentDot = dotsNav.querySelector(".current-slide");
+    const prevDot = currentDot.previousElementSibling;
+    const prevIndex = slides.findIndex((slide) => slide === prevSlide);
+    moveToSlide(carouselContent, currentSlide, prevSlide);
+    updateDots(currentDot, prevDot);
+    hideShowArrows(slides, nextBtn, prevBtn, prevIndex);
+  });
 
-nextBtn.addEventListener("click", (e) => {
-  const currentSlide = carouselContent.querySelector(".current-slide");
-  const nextSlide = currentSlide.nextElementSibling;
-  const currentDot = dotsNav.querySelector(".current-slide");
-  const nextDot = currentDot.nextElementSibling;
-  const nextIndex = slides.findIndex((slide) => slide === nextSlide);
-  moveToSlide(carouselContent, currentSlide, nextSlide);
-  updateDots(currentDot, nextDot);
-  hideShowArrows(slides, nextBtn, prevBtn, nextIndex);
-});
+  nextBtn.addEventListener("click", (e) => {
+    const currentSlide = carouselContent.querySelector(".current-slide");
+    const nextSlide = currentSlide.nextElementSibling;
+    const currentDot = dotsNav.querySelector(".current-slide");
+    const nextDot = currentDot.nextElementSibling;
+    const nextIndex = slides.findIndex((slide) => slide === nextSlide);
+    moveToSlide(carouselContent, currentSlide, nextSlide);
+    updateDots(currentDot, nextDot);
+    hideShowArrows(slides, nextBtn, prevBtn, nextIndex);
+  });
 
-const hideShowArrows = (slides, prevBtn, nextBtn, targetIndex) => {
-  if (targetIndex === 0) {
-    prevBtn.classList.remove("is-hidden");
-    nextBtn.classList.add("is-hidden");
-  } else if (targetIndex === slides.length - 1) {
-    prevBtn.classList.add("is-hidden");
-    nextBtn.classList.remove("is-hidden");
-  } else {
-    prevBtn.classList.remove("is-hidden");
-    nextBtn.classList.remove("is-hidden");
-  }
-};
+  const hideShowArrows = (slides, prevBtn, nextBtn, targetIndex) => {
+    if (targetIndex === 0) {
+      prevBtn.classList.remove("is-hidden");
+      nextBtn.classList.add("is-hidden");
+    } else if (targetIndex === slides.length - 1) {
+      prevBtn.classList.add("is-hidden");
+      nextBtn.classList.remove("is-hidden");
+    } else {
+      prevBtn.classList.remove("is-hidden");
+      nextBtn.classList.remove("is-hidden");
+    }
+  };
 
-dotsNav.addEventListener("click", (e) => {
-  const targetDot = e.target.closest("button");
-  if (!targetDot) return;
+  dotsNav.addEventListener("click", (e) => {
+    const targetDot = e.target.closest("button");
+    if (!targetDot) return;
 
-  const currentSlide = carouselContent.querySelector(".current-slide");
-  const currentDot = dotsNav.querySelector(".current-slide");
-  const targetIndex = dots.findIndex((dot) => dot === targetDot);
-  const targetSlide = slides[targetIndex];
+    const currentSlide = carouselContent.querySelector(".current-slide");
+    const currentDot = dotsNav.querySelector(".current-slide");
+    const targetIndex = dots.findIndex((dot) => dot === targetDot);
+    const targetSlide = slides[targetIndex];
 
-  moveToSlide(carouselContent, currentSlide, targetSlide);
-  updateDots(currentDot, targetDot);
-  hideShowArrows(slides, nextBtn, prevBtn, targetIndex);
-});
+    moveToSlide(carouselContent, currentSlide, targetSlide);
+    updateDots(currentDot, targetDot);
+    hideShowArrows(slides, nextBtn, prevBtn, targetIndex);
+  });
 });
