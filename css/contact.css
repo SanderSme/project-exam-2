@@ -15,6 +15,7 @@ body {
   width: 100%;
   height: 2rem;
   margin-top: 2rem;
+  border-radius: 5px;
 }
 
 #name-form {
@@ -35,10 +36,12 @@ body {
 }
 
 .error-message {
-  color: red;
+  color: white;
   position: absolute;
   bottom: 2rem;
-  background: #ffffff70;
+  background: red;
+  padding: 0 0.5rem;
+  border-radius: 5px;
 }
 
 #message-error {
@@ -54,7 +57,7 @@ body {
   color: white;
   background: green;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   top: 1rem;
   left: 50%;
   transform: translateX(-50%);

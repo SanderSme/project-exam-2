@@ -17,6 +17,10 @@ h5 {
   font-weight: bold;
 }
 
+main {
+  min-height: 100vh;
+}
+
 .page-container {
   max-width: 90%;
   margin: 0 auto;
@@ -89,7 +93,7 @@ h5 {
 
 .post-container {
   position: relative;
-  height: 703px;
+  height: 500px;
   width: 100%;
 }
 
@@ -104,17 +108,22 @@ h5 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 40%;
 }
 
 .post-img {
   width: 80%;
-  margin-top: 5rem;
+  margin-top: 0rem;
 }
 
 .post-info {
   margin-top: 1rem;
   z-index: 99;
+  font-size: 80%;
+}
+
+.post-heading {
+  font-size: 100%;
 }
 
 .button {
@@ -187,7 +196,7 @@ h5 {
   justify-content: center;
   padding: 10px 0;
   bottom: 15%;
-  top: 42rem;
+  top: 28rem;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -223,8 +232,24 @@ h5 {
     height: 700px;
   }
 
+  .post {
+    width: 45%;
+  }
+
+  .post-img {
+    margin-top: 0;
+  }
+
+  .post-info {
+    font-size: 100%;
+  }
+
+  .post-heading {
+    font-size: 1.5rem;
+  }
+
   .carousel-nav {
-    top: 43rem;
+    top: 40rem;
   }
 }
 
@@ -238,8 +263,8 @@ h5 {
     height: 800px;
   }
 
-  .carousel-nav {
-    top: 44rem;
+  .post {
+    width: 50%;
   }
 
   .hero-banner {
@@ -268,7 +293,7 @@ h5 {
 
   .heading {
     border-bottom: none;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .line {
@@ -308,8 +333,16 @@ h5 {
     margin-top: 7rem;
   }
 
+  #left-line {
+    margin-right: 54px;
+  }
+
+  #right-line {
+    margin-left: 54px;
+  }
+
   .general-heading {
     border-bottom: none;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
