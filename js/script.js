@@ -8,7 +8,7 @@ async function getPosts() {
     let postData = await response.json();
     return postData;
   } catch (error) {
-    console.log("ERROOOOOR");
+    console.log("ERROR");
   }
 }
 if (window.innerWidth > 768) {
