@@ -55,9 +55,7 @@ const API_URL =
   "https://boatdatlife.flywheelsites.com/wp-json/wp/v2/posts?acf_format=standard&per_page=10";
 const blogList = document.querySelector(".blog-list-container");
 const filterPosts = document.getElementById("myFilter");
-const buttonContainer = document.querySelector(".button-container");
 const loading = document.querySelector(".lds-hourglass");
-const blogContainer = document.querySelector(".blog-list-container");
 loading.style.display = "block";
 
 let counter = 0;
