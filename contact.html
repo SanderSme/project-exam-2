@@ -91,68 +91,54 @@
         </div>
         <div class="contact-container">
           <form
-            name="form-container"
-            class="form-container"
-            action="#"
-            onsubmit="return false"
-          >
-            <div class="field-container">
-              <div class="submit-container">
-                <div class="submitted"></div>
-              </div>
-              <div class="error-message" id="name-error"></div>
-              <label for="name">
-                <input
-                  name="name"
-                  class="form"
-                  type="text"
-                  id="name-form"
-                  placeholder="Enter your name"
-                />
-              </label>
+          action="https://boatdatlife.flywheelsites.com/wp-json/contact-form-7/v1/contact-forms/216/feedback"
+          method="post"
+          class="form-container"
+          name="form-container"
+        >
+          <div class="field-container">
+            <div class="submit-container">
+              <div class="submitted"></div>
             </div>
-            <div class="field-container">
-              <div class="error-message" id="subject-error"></div>
-              <label for="subject">
-                <input
-                  name="subject"
-                  class="form"
-                  type="text"
-                  id="subject-form"
-                  placeholder="What is your request about?"
-                />
-              </label>
-            </div>
-            <div class="field-container">
-              <div class="error-message" id="email-error"></div>
-              <label for="email">
-                <input
-                  name="email"
-                  class="form"
-                  type="text"
-                  id="email-form"
-                  placeholder="Enter your E-Mail"
-                />
-              </label>
-            </div>
-            <div class="field-container">
-              <div class="error-message" id="message-error"></div>
-              <label for="message">
-                <textarea
-                  name="message"
-                  class="form"
-                  type="text"
-                  id="message-form"
-                  placeholder="Write your message"
-                ></textarea>
-              </label>
-            </div>
-            <div>
-              <button class="submit-button button" onclick="validateForm()">
-                Submit
-              </button>
-            </div>
-          </form>
+            <div class="error-message" id="name-error"></div>
+            <label for="your-name">
+              <input name="your-name" class="form" type="text" id="name-form" placeholder="Enter your name" />
+            </label>
+          </div>
+          <div class="field-container">
+            <div class="error-message" id="email-error"></div>
+            <label for="your-email">
+              <input name="your-email" class="form" type="text" id="email-form" placeholder="Enter your E-Mail" />
+            </label>
+          </div>
+          <div class="field-container">
+            <div class="error-message" id="subject-error"></div>
+            <label for="your-subject">
+              <input
+                name="your-subject"
+                class="form"
+                type="text"
+                id="subject-form"
+                placeholder="What is your request about?"
+              />
+            </label>
+          </div>
+          <div class="field-container">
+            <div class="error-message" id="message-error"></div>
+            <label for="your-message">
+              <textarea
+                name="your-message"
+                class="form"
+                type="text"
+                id="message-form"
+                placeholder="Write your message"
+              ></textarea>
+            </label>
+          </div>
+          <div>
+            <button type="submit" class="submit-button button">Submit</button>
+          </div>
+        </form>
         </div>
       </div>
     </main>

@@ -1,11 +1,21 @@
-function validateForm() {
-  let name = document.forms["form-container"]["name"].value;
-  let email = document.forms["form-container"]["email"].value;
-  let subject = document.forms["form-container"]["subject"].value;
-  let message = document.forms["form-container"]["message"].value;
+const validateForm = (event) => {
+  event.preventDefault();
+
+  let name = document.forms["form-container"]["your-name"].value;
+  let email = document.forms["form-container"]["your-email"].value;
+  let subject = document.forms["form-container"]["your-subject"].value;
+  let message = document.forms["form-container"]["your-message"].value;
 
   let atPosition = email.indexOf("@");
   let dotPosition = email.lastIndexOf(".");
+
+  let isName = name.length > 5;
+  let isEmail =
+    atPosition < 1 ||
+    dotPosition < atPosition + 2 ||
+    dotPosition + 2 >= email.length;
+  let isSubject = subject.length > 15;
+  let isMessage = message.length > 25;
 
   const nameError = document.getElementById("name-error");
   const emailError = document.getElementById("email-error");
@@ -13,31 +23,41 @@ function validateForm() {
   const messageError = document.getElementById("message-error");
   const submitted = document.querySelector(".submitted");
 
-  if (name < 5) {
-    nameError.innerHTML = "Please fill in your name";
-  } else {
-    nameError.innerHTML = "";
+  nameError.innerHTML = isName ? "" : "Name must be at least 5 characters";
+  emailError.innerHTML = !isEmail
+    ? ""
+    : "Please fill in a valid e-mail address";
+  subjectError.innerHTML = isSubject
+    ? ""
+    : "Subject must be at least 15 characters";
+  messageError.innerHTML = isMessage
+    ? ""
+    : "Message must be at least 25 characters";
+
+  const isSubmit = isName && !isEmail && isSubject && isMessage;
+
+  if (isSubmit) {
+    const formElement = event.target;
+    const action = formElement.action;
+    const method = formElement.method;
+
+    const body = new FormData(formElement);
+
+    fetch(action, {
+      method,
+      body,
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        submitted.innerHTML = response.message;
+      })
+      .catch((error) => {
+        console.log("There was an error: ");
+        console.log(error);
+        submitted.innerHTML = "There was an error. Please try again";
+      });
   }
-  if (subject.length < 15) {
-    subjectError.innerHTML = "Subject must be atleast 15 characters";
-  } else {
-    subjectError.innerHTML = "";
-  }
-  if (
-    atPosition < 1 ||
-    dotPosition < atPosition + 2 ||
-    dotPosition + 2 >= email.length
-  ) {
-    emailError.innerHTML = "Please enter correct E-Mail ID";
-  } else {
-    emailError.innerHTML = "";
-  }
-  if (message.length < 25) {
-    messageError.innerHTML = "Message must be atleast 25 characters";
-    return false;
-  } else {
-    messageError.innerHTML = "";
-  }
-  submitted.innerHTML = "Form submitted";
-  return true;
-}
+};
+
+const formElement = document.querySelector("form");
+formElement.addEventListener("submit", validateForm);
