@@ -109,7 +109,7 @@ async function getPostDetails() {
 }
 getPostDetails();
 
-const commentURL = `https://boatdatlife.flywheelsites.com/wp-json/wp/v2/comments?post=${postID}&per_page=100`;
+const commentURL = `https://boatdatlife.flywheelsites.com/wp-json/wp/v2/comments?post=${postID}&per_page=200`;
 const commentContainer = document.querySelector(".comments");
 
 async function fetchComments() {
