@@ -88,6 +88,23 @@
         <div class="blog-post">
           <div class="lds-hourglass"></div>
         </div>
+        <div class="comment-heading">
+          <h2>Leave a comment:</h2>
+        </div>
+        <form action="https://boatdatlife.flywheelsites.com/wp-json/wp/v2/comments" class="form-container">
+          <input name="postId" class="post-id" type="hidden" />
+          <label for="name" class="form-label">
+            <input name="name" type="text" placeholder="Enter name" class="comment-form" id="name"/>
+          </label>
+          <label for="email" class="form-label">
+            <input name="email" type="text" placeholder="Enter email-address" class="comment-form" id="email"/>
+          </label>
+          <label for="comment" class="form-label">
+            <textarea name="comment" placeholder="Write your comment" class="comment-form" id="comment"></textarea>
+          </label>
+          <button type="submit" class="comment-button button">Submit comment</button>
+        </form>
+        <div class="comments"></div>
       </div>
     </main>
     <footer class="footer">
