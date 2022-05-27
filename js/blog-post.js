@@ -108,3 +108,78 @@ async function getPostDetails() {
   }
 }
 getPostDetails();
+
+const commentURL = `https://boatdatlife.flywheelsites.com/wp-json/wp/v2/comments?post=${postID}&per_page=100`;
+const commentContainer = document.querySelector(".comments");
+
+async function fetchComments() {
+  try {
+    const response = await fetch(commentURL);
+    const commentData = await response.json();
+    if (response.ok) {
+      commentData.forEach((comment) => {
+        const d = new Date(comment.date);
+        const day = d.getDay();
+        const month = d.getMonth();
+        const year = d.getFullYear();
+        const hour = d.getHours();
+        const minute = d.getMinutes();
+
+        const date = `${hour}:${minute} - ${day}.${month}.${year}`;
+
+        const newComment = document.createElement("div");
+
+        newComment.innerHTML = `
+          <div>
+            <h3>${comment.author_name}</h3>
+            <h5>${date}</h5>
+            <div>${comment.content.rendered}</div>
+          </div>
+        `;
+        commentContainer.appendChild(newComment);
+      });
+    }
+  } catch (error) {
+    console.log("There was an error: ");
+    console.log(error);
+  }
+}
+fetchComments();
+
+const postIdElement = document.querySelector(".post-id");
+postIdElement.setAttribute("value", `${postID}`);
+
+const submitComment = (event) => {
+  event.preventDefault();
+
+  const { action } = event.target;
+  const { postId, name, email, comment } = event.target.elements;
+
+  const data = JSON.stringify({
+    post: postId.value,
+    author_name: name.value,
+    author_email: email.value,
+    content: comment.value,
+  });
+
+  fetch(action, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log("Submitted comment:");
+      console.log(response);
+      fetchComments();
+    })
+    .catch((error) => {
+      console.log("There was an error: ");
+      console.log(error);
+    });
+};
+
+const formElement = document.querySelector("form");
+formElement.addEventListener("submit", submitComment);
