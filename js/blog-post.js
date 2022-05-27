@@ -31,7 +31,7 @@ async function getPostDetails() {
     const cons2 = singlePostDetails.acf.cons_2;
     const cons3 = singlePostDetails.acf.cons_3;
     const cons4 = singlePostDetails.acf.cons_4;
-    title.innerHTML = `${postTitle}`;
+    title.innerHTML = `BoatDatLife | ${postTitle}`;
     postHeading.innerHTML = `${postTitle}`;
     blogPost.innerHTML = `<div class="blog-flex-container">
       <img
