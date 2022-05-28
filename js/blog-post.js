@@ -111,6 +111,7 @@ getPostDetails();
 
 const commentURL = `https://boatdatlife.flywheelsites.com/wp-json/wp/v2/comments?post=${postID}&per_page=100`;
 const commentContainer = document.querySelector(".comments");
+const submitted = document.querySelector('.submitted')
 
 async function fetchComments() {
   try {
@@ -171,12 +172,11 @@ const submitComment = (event) => {
   })
     .then((response) => response.json())
     .then((response) => {
-      console.log("Submitted comment:");
       console.log(response);
+      submitted.innerHTML = 'Comment submitted'
       fetchComments();
     })
     .catch((error) => {
-      console.log("There was an error: ");
       console.log(error);
     });
 };
