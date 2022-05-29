@@ -153,7 +153,7 @@ postIdElement.setAttribute("value", `${postID}`);
 const submitComment = (event) => {
   event.preventDefault();
 
-  const { action } = event.target;
+  const action = event.target.action;
   const { postId, name, email, comment } = event.target.elements;
 
   const data = JSON.stringify({
