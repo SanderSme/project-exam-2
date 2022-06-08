@@ -1,6 +1,6 @@
 # BoatDatLife
 
-![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
+![image](https://user-images.githubusercontent.com/89382184/172600486-685242ba-5e3b-466b-a615-af22d1da41f4.png)
 
 ## Description
 
